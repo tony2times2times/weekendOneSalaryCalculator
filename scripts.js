@@ -21,6 +21,14 @@ var makeCents =  function (value){
   return (value);
 }
 
+var clearBoxes = function(){
+  document.getElementById( 'fName' ).value = '';
+  document.getElementById( 'lName' ).value = '';
+  document.getElementById( 'id' ).value = '';
+  document.getElementById( 'title' ).value = '';
+  document.getElementById( 'salary' ).value = '';
+}
+
 console.log(makeCents(40));
 
 var addEmployee = function(){
@@ -34,6 +42,7 @@ var addEmployee = function(){
   var payPeriodIn = document.getElementById( 'payPeriod' ).value;
   if (fubar){  console.log( 'adding item: ', fNameIn, lNameIn, idIn, titleIn, salaryIn, payPeriodIn );}
   //Change salary depending on the pay period specified
+  clearBoxes();
   if (payPeriodIn=== 'Monthly'){
     if (fubar) {console.log('Converting monthly pay to annual.' );}
     var annualSallary = makeCents(monthlyToAnnual(salaryIn));
