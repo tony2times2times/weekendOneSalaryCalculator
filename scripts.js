@@ -3,6 +3,7 @@
 
 //Global Variables
 var fubar = true;
+//test object displayed with alphabetical properties
 var employees=[{Annualsalary:100000000, firstName:'Tony', idNumber:12345, jobTitle:'Develper', lastName:'Peraza'} ];
 
 var monthlyToAnnual= function(pay){
@@ -17,9 +18,9 @@ var biweeklyToAnnual = function(pay){
 
 var makeCents =  function (value){
   value = parseFloat(value);
-  value = value.toFixed(2)
+  value = value.toFixed(2);
   return (value);
-}
+};
 
 var clearBoxes = function(){
   document.getElementById( 'fName' ).value = '';
@@ -27,9 +28,15 @@ var clearBoxes = function(){
   document.getElementById( 'id' ).value = '';
   document.getElementById( 'title' ).value = '';
   document.getElementById( 'salary' ).value = '';
-}
+};
 
-console.log(makeCents(40));
+var printEmployees = function(){
+  if (fubar) { console.log('Now printing the employee roster.');}
+  var div = document.getElementById('employeeRoster');
+  for (var i = 0; i < employees.length; i++) {
+    div.innerHTML = div.innderHTML + JSON.stringify(employees[i], null, 4);
+  }
+};
 
 var addEmployee = function(){
   if (fubar) {console.log('addEmployee function running');}
@@ -58,7 +65,7 @@ var addEmployee = function(){
   //create an employee object
   var employee = {
     //ensure that the annual sallary is rounded down to two decimal places
-    annualSallary: (parseFloat(annualSallary)),
+    annualSallary: annualSallary,
     firstName: fNameIn,
     idNumber: idIn,
     jobTitle: titleIn,
@@ -67,4 +74,12 @@ var addEmployee = function(){
   //add employee object to employees array
   employees.push( employee );
   if (fubar) {console.log( 'Employee Array:', employees );}
+  printEmployees();
 };
+
+
+window.onload = function() {
+  printEmployees();
+};
+
+// alert(JSON.stringify(employees[0], null, 4));
