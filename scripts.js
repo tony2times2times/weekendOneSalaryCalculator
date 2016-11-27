@@ -4,7 +4,8 @@
 //Global Variables
 var fubar = true;
 //test object displayed with alphabetical properties
-var employees=[{Annualsalary:100000000, firstName:'Tony', idNumber:12345, jobTitle:'Develper', lastName:'Peraza'} ];
+var employees=[{annualsalary:100000000, firstName:'Tony', idNumber:12345, jobTitle:'Develper', lastName:'Peraza'} ];
+var count = 0;
 
 var monthlyToAnnual= function(pay){
   pay = pay*12;
@@ -33,8 +34,8 @@ var clearBoxes = function(){
 var printEmployees = function(){
   if (fubar) { console.log('Now printing the employee roster.');}
   var div = document.getElementById('employeeRoster');
-  for (var i = 0; i < employees.length; i++) {
-    if (fubar) { console.log('Adding new employee:', employees[i].firstName, employees[i].lastName);}
+  for (count; count < employees.length; count++) {
+    if (fubar) { console.log('Adding new employee:', employees[count].firstName, employees[count].lastName);}
     var row = div.insertRow();
     var cell0 = row.insertCell(0);
     var cell1 = row.insertCell(1);
@@ -42,9 +43,22 @@ var printEmployees = function(){
     var cell3 = row.insertCell(3);
     var cell4 = row.insertCell(4);
 
-    cell0.innerHTML = employees[i].firstName;
+    cell0.innerHTML = employees[count].firstName;
+    cell1.innerHTML = employees[count].lastName;
+    cell2.innerHTML = employees[count].idNumber;
+    cell3.innerHTML = employees[count].jobTitle;
+    cell4.innerHTML = employees[count].annualsalary;
+
+
   }
 };
+
+var totalSalary = function () {
+  for (var i = 0; i < employees.length; i++) {
+    var totalPay = totalPay + employees[i].annualsalary;
+  }
+  if (fubar) {console.log("Total salary is calculated at:", makeCents(totalPay));}
+}
 
 var addEmployee = function(){
   if (fubar) {console.log('addEmployee function running');}
@@ -60,20 +74,20 @@ var addEmployee = function(){
   clearBoxes();
   if (payPeriodIn=== 'Monthly'){
     if (fubar) {console.log('Converting monthly pay to annual.' );}
-    var annualSallary = makeCents(monthlyToAnnual(salaryIn));
+    var annualsalary = makeCents(monthlyToAnnual(salaryIn));
   }
   else if (payPeriodIn === 'Biweekly') {
     if (fubar) {console.log( 'converting biweekly pay to annual.' );}
-    annualSallary = makeCents(biweeklyToAnnual(salaryIn));
+    annualsalary = makeCents(biweeklyToAnnual(salaryIn));
   }
   else {
     if (fubar) {console.log('no conversion required pay is set to annual');}
-    annualSallary= makeCents(salaryIn);
+    annualsalary= makeCents(salaryIn);
   }
   //create an employee object
   var employee = {
-    //ensure that the annual sallary is rounded down to two decimal places
-    annualSallary: annualSallary,
+    //ensure that the annual salary is rounded down to two decimal places
+    annualsalary: annualsalary,
     firstName: fNameIn,
     idNumber: idIn,
     jobTitle: titleIn,
@@ -83,11 +97,13 @@ var addEmployee = function(){
   employees.push( employee );
   if (fubar) {console.log( 'Employee Array:', employees );}
   printEmployees();
+  totalSalary();
 };
 
 
 window.onload = function() {
   printEmployees();
+  totalSalary();
 };
 
 // alert(JSON.stringify(employees[0], null, 4));
