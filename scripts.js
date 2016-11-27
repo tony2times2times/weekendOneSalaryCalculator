@@ -4,7 +4,7 @@
 //Global Variables
 var fubar = true;
 //test object displayed with alphabetical properties
-var employees=[{annualsalary:100000000, firstName:'Tony', idNumber:12345, jobTitle:'Develper', lastName:'Peraza'} ];
+var employees=[{annualsalary:100.00, firstName:'Tony', idNumber:12345, jobTitle:'Develper', lastName:'Peraza'} ];
 var count = 0;
 
 var monthlyToAnnual= function(pay){
@@ -54,10 +54,13 @@ var printEmployees = function(){
 };
 
 var totalSalary = function () {
+  if (fubar) {console.log("Total salary is now being calculated")}
+  var annualPayOut = 0;
   for (var i = 0; i < employees.length; i++) {
-    var totalPay = totalPay + employees[i].annualsalary;
+    annualPayOut = annualPayOut + employees[i].annualsalary;
   }
-  if (fubar) {console.log("Total salary is calculated at:", makeCents(totalPay));}
+  var monthlyPayOut = annualPayOut/12;
+  document.getElementById('monthlyTotal').innerHTML= "Monthly Salaryies Total: "+ makeCents(monthlyPayOut);
 }
 
 var addEmployee = function(){
@@ -105,5 +108,3 @@ window.onload = function() {
   printEmployees();
   totalSalary();
 };
-
-// alert(JSON.stringify(employees[0], null, 4));
