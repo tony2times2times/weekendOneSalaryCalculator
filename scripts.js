@@ -34,7 +34,15 @@ var printEmployees = function(){
   if (fubar) { console.log('Now printing the employee roster.');}
   var div = document.getElementById('employeeRoster');
   for (var i = 0; i < employees.length; i++) {
-    div.innerHTML = div.innderHTML + JSON.stringify(employees[i], null, 4);
+    if (fubar) { console.log('Adding new employee:', employees[i].firstName, employees[i].lastName);}
+    var row = div.insertRow();
+    var cell0 = row.insertCell(0);
+    var cell1 = row.insertCell(1);
+    var cell2 = row.insertCell(2);
+    var cell3 = row.insertCell(3);
+    var cell4 = row.insertCell(4);
+
+    cell0.innerHTML = employees[i].firstName;
   }
 };
 
