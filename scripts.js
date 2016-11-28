@@ -4,8 +4,9 @@
 //Global Variables
 var fubar = true;
 //test objects displayed with alphabetical properties
-var employees=[{annualSalary:1000000.00, firstName:'Tony', idNumber:12345, jobTitle:'Develper', lastName:'Peraza'},
-                {annualSalary:1000001.00, firstName:'Tori', idNumber:1, jobTitle:'Head Wife', lastName:'Peraza'} ];
+var employees=[{annualSalary:1000000.00, firstName:'Tony', idNumber:42, jobTitle:'Develper', lastName:'Peraza'},
+                {annualSalary:1000001.00, firstName:'Tori', idNumber:1, jobTitle:'Wife', lastName:'Peraza'},
+              {annualSalary:500.00, firstName:'Kiki', idNumber:5, jobTitle:'cat', lastName:'Peraza'} ];
 var count = 0;
 
 var monthlyToAnnual= function(pay){
