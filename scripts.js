@@ -3,9 +3,9 @@
 
 //Global Variables
 var fubar = true;
-//test object displayed with alphabetical properties
-var employees=[{annualSalary:1200.00, firstName:'Tony', idNumber:12345, jobTitle:'Develper', lastName:'Peraza'},
-                {annualSalary:1200.00, firstName:'Tori', idNumber:1, jobTitle:'Wife', lastName:'Peraza'} ];
+//test objects displayed with alphabetical properties
+var employees=[{annualSalary:1000000.00, firstName:'Tony', idNumber:12345, jobTitle:'Develper', lastName:'Peraza'},
+                {annualSalary:100000.00, firstName:'Tori', idNumber:1, jobTitle:'Wife', lastName:'Peraza'} ];
 var count = 0;
 
 var monthlyToAnnual= function(pay){
@@ -32,28 +32,6 @@ var clearBoxes = function(){
   document.getElementById( 'salary' ).value = '';
 };
 
-var printEmployees = function(){
-  if (fubar) { console.log('Now printing the employee roster.');}
-  var div = document.getElementById('employeeRoster');
-  for (count; count < employees.length; count++) {
-    if (fubar) { console.log('Adding new employee:', employees[count].firstName, employees[count].lastName);}
-    var row = div.insertRow();
-    var cell0 = row.insertCell(0);
-    var cell1 = row.insertCell(1);
-    var cell2 = row.insertCell(2);
-    var cell3 = row.insertCell(3);
-    var cell4 = row.insertCell(4);
-
-    cell0.innerHTML = employees[count].firstName;
-    cell1.innerHTML = employees[count].lastName;
-    cell2.innerHTML = employees[count].idNumber;
-    cell3.innerHTML = employees[count].jobTitle;
-    cell4.innerHTML = employees[count].annualSalary;
-
-
-  }
-};
-
 var totalSalary = function () {
   if (fubar) {console.log("Total salary is now being calculated");}
   var annualPayOut = 0;
@@ -64,10 +42,48 @@ var totalSalary = function () {
     console.log("annual pay out is :", annualPayOut);
   }
   var monthlyPayOut = makeCents(annualPayOut)/12;
-  document.getElementById('monthlyTotal').innerHTML= "Monthly Salaryies Total: "+ makeCents(monthlyPayOut);
+  document.getElementById('monthlyTotal').innerHTML= "Each month we pay $" + makeCents(monthlyPayOut) + " to our employees. <br> Our average employee is paid " + makeCents(monthlyPayOut/count) + ' each month.';
 }
 
-var addEmployee = function(){
+
+var remove = function (index) {
+  if (fubar) { ("Now removing:",employees[index].firstName, employees[index].lastName)}
+  employees.splice(index, 1);
+  //reset the employee roster table
+  document.getElementById('employeeRoster').innerHTML= "<tr> <th>First Name</th> <th>Last Name</th> <th>ID Number</th> <th>Job Title</th> <th>Annual Salary</th> </tr>";
+  //reset global variable for count
+  count = 0;
+  //reprint the employee array to the roster
+  printEmployees()
+  totalSalary()
+
+};
+
+
+function printEmployees(){
+  if (fubar) { console.log('Now printing the employee roster.');}
+  var div = document.getElementById('employeeRoster');
+  for (count; count < employees.length; count++) {
+    if (fubar) { console.log('Adding new employee:', employees[count].firstName, employees[count].lastName);}
+    var row = div.insertRow();
+    var cell0 = row.insertCell(0);
+    var cell1 = row.insertCell(1);
+    var cell2 = row.insertCell(2);
+    var cell3 = row.insertCell(3);
+    var cell4 = row.insertCell(4);
+    var cell5 = row.insertCell(5);
+
+    cell0.innerHTML = employees[count].firstName;
+    cell1.innerHTML = employees[count].lastName;
+    cell2.innerHTML = employees[count].idNumber;
+    cell3.innerHTML = employees[count].jobTitle;
+    cell4.innerHTML = employees[count].annualSalary;
+    cell5.innerHTML = ('<button class="del" onclick="remove(' + count + ')">' + 'DELETE' + '</button>');
+
+  }
+};
+
+function addEmployee(){
   if (fubar) {console.log('addEmployee function running');}
   //get local variables from user input
   var fNameIn = document.getElementById( 'fName' ).value;
