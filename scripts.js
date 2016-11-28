@@ -2,13 +2,14 @@
 //First weekend project for Prime Academy
 
 //Global Variables
-var fubar = true;
+var fubar = false;
 //test objects displayed with alphabetical properties
 var employees=[{annualSalary:1000000.00, firstName:'Tony', idNumber:42, jobTitle:'Develper', lastName:'Peraza'},
                 {annualSalary:1000001.00, firstName:'Tori', idNumber:1, jobTitle:'Wife', lastName:'Peraza'},
               {annualSalary:500.00, firstName:'Kiki', idNumber:5, jobTitle:'cat', lastName:'Peraza'} ];
 var count = 0;
 
+//function expressions used to increase load speed
 var monthlyToAnnual= function(pay){
   pay = pay*12;
   return(pay);
@@ -38,9 +39,9 @@ var totalSalary = function () {
   var annualPayOut = 0;
   for (var i = 0; i < employees.length; i++) {
     var pay = makeCents(employees[i].annualSalary);
-    console.log(employees[i].firstName + ' makes ' + pay);
+    if (fubar) {console.log(employees[i].firstName + ' makes ' + pay);}
     annualPayOut = (parseFloat(annualPayOut) +  parseFloat(pay));
-    console.log("annual pay out is :", annualPayOut);
+    if (fubar) {console.log("annual pay out is :", annualPayOut);}
   }
   var monthlyPayOut = makeCents(annualPayOut)/12;
   document.getElementById('monthlyTotal').innerHTML= "Each month we pay $" + makeCents(monthlyPayOut) + " to our employees. <br> Our average employee is paid " + makeCents(monthlyPayOut/count) + ' each month.';
@@ -58,7 +59,7 @@ var remove = function (index) {
   totalSalary()
 
 };
-
+//declaired functions used so that they can be accessed from anywhere in the script
 function printEmployees(){
   if (fubar) { console.log('Now printing the employee roster.');}
   var div = document.getElementById('employeeRoster');
