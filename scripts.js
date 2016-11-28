@@ -44,7 +44,7 @@ var totalSalary = function () {
     if (debug) {console.log("annual pay out is :", annualPayOut);}
   }
   var monthlyPayOut = makeCents(annualPayOut)/12;
-  document.getElementById('monthlyTotal').innerHTML= "Each month we pay $" + makeCents(monthlyPayOut) + " to our employees. <br> Our average employee is paid " + makeCents(monthlyPayOut/count) + ' each month.';
+  document.getElementById('monthlyTotal').innerHTML= "Each month we pay $" + makeCents(monthlyPayOut) + " to our employees. <br> Our average employee is paid $" + makeCents(monthlyPayOut/count) + ' each month.';
 };
 
 var remove = function (index) {
