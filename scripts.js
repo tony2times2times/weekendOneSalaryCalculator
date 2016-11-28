@@ -45,7 +45,6 @@ var totalSalary = function () {
   document.getElementById('monthlyTotal').innerHTML= "Each month we pay $" + makeCents(monthlyPayOut) + " to our employees. <br> Our average employee is paid " + makeCents(monthlyPayOut/count) + ' each month.';
 }
 
-
 var remove = function (index) {
   if (fubar) { ("Now removing:",employees[index].firstName, employees[index].lastName)}
   employees.splice(index, 1);
@@ -58,7 +57,6 @@ var remove = function (index) {
   totalSalary()
 
 };
-
 
 function printEmployees(){
   if (fubar) { console.log('Now printing the employee roster.');}
@@ -77,7 +75,7 @@ function printEmployees(){
     cell1.innerHTML = employees[count].lastName;
     cell2.innerHTML = employees[count].idNumber;
     cell3.innerHTML = employees[count].jobTitle;
-    cell4.innerHTML = employees[count].annualSalary;
+    cell4.innerHTML = makeCents(employees[count].annualSalary);
     cell5.innerHTML = ('<button class="del" onclick="remove(' + count + ')">' + 'DELETE' + '</button>');
 
   }
