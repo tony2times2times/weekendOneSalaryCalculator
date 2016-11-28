@@ -5,7 +5,7 @@
 var fubar = true;
 //test objects displayed with alphabetical properties
 var employees=[{annualSalary:1000000.00, firstName:'Tony', idNumber:12345, jobTitle:'Develper', lastName:'Peraza'},
-                {annualSalary:100000.00, firstName:'Tori', idNumber:1, jobTitle:'Wife', lastName:'Peraza'} ];
+                {annualSalary:1000001.00, firstName:'Tori', idNumber:1, jobTitle:'Head Wife', lastName:'Peraza'} ];
 var count = 0;
 
 var monthlyToAnnual= function(pay){
