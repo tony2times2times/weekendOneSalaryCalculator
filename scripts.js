@@ -62,10 +62,9 @@ var remove = function (index) {
 //declaired functions used so that they can be accessed from anywhere in the script
 function printEmployees(){
   if (fubar) { console.log('Now printing the employee roster.');}
-  var div = document.getElementById('employeeRoster');
   for (count; count < employees.length; count++) {
     if (fubar) { console.log('Adding new employee:', employees[count].firstName, employees[count].lastName);}
-    var row = div.insertRow();
+    var row = document.getElementById('employeeRoster').insertRow();
     var cell0 = row.insertCell(0);
     var cell1 = row.insertCell(1);
     var cell2 = row.insertCell(2);

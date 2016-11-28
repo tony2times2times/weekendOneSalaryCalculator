@@ -8,6 +8,7 @@
 </head>
 <body>
   <h2>Payroll Calculator</h2>
+  <div id ='inputBoxes'>
   <input type="text" id='fName' placeholder="First Name"><br>
   <input type="text" id='lName' placeholder="Last Name"><br>
   <input type="text" id='id' placeholder="Employee ID Number"><br>
@@ -19,6 +20,7 @@
     <option>Biweekly</option>
   </select><br>
   <button onclick="addEmployee()">Add Employee</button>
+</div>
   <br>
   <table id='employeeRoster'>
     <tr>
@@ -29,6 +31,7 @@
       <th>Annual Salary</th>
     </tr>
   </table>
+  <br>
   <div id='monthlyTotal'></div>
 
 </body>

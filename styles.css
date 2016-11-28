@@ -1,6 +1,7 @@
 table {
   border: 1px solid black;
-  margin: 0;
+  margin-right: 15%;
+  float:right;
 }
 button {
     background-color: #4CAF50; /* Green */
@@ -18,5 +19,19 @@ background-color: AliceBlue;
 }
 
 #monthlyTotal {
-    font-size: 22px;
+  display: inline-block;
+  margin:50px, 50px, 50px, 50px;
+  width:100%;
+  font-size: 22px;
+  text-align: center;
+}
+
+#inputBoxes {
+  float: left;
+  margin-left: 25%;
+  text-align: :center;
+}
+
+h2 {
+  text-align: center;
 }
