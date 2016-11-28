@@ -4,7 +4,7 @@
 //Global Variables
 var fubar = false;
 //test objects displayed with alphabetical properties
-var employees=[{annualSalary:1000000.00, firstName:'Tony', idNumber:42, jobTitle:'Develper', lastName:'Peraza'},
+var employees=[{annualSalary:1000000.00, firstName:'Tony', idNumber:42, jobTitle:'Developer', lastName:'Peraza'},
                 {annualSalary:1000001.00, firstName:'Tori', idNumber:1, jobTitle:'Wife', lastName:'Peraza'},
               {annualSalary:500.00, firstName:'Kiki', idNumber:5, jobTitle:'cat', lastName:'Peraza'} ];
 var count = 0;
