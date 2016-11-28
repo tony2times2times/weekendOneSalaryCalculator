@@ -76,7 +76,7 @@ function printEmployees(){
     cell1.innerHTML = employees[count].lastName;
     cell2.innerHTML = employees[count].idNumber;
     cell3.innerHTML = employees[count].jobTitle;
-    cell4.innerHTML = makeCents(employees[count].annualSalary);
+    cell4.innerHTML ='$' + makeCents(employees[count].annualSalary);
     cell5.innerHTML = ('<button class="del" onclick="remove(' + count + ')">' + 'DELETE' + '</button>');
 
   }
