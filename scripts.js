@@ -2,11 +2,11 @@
 //First weekend project for Prime Academy
 
 //Global Variables
-var fubar = false;
+var debug = false;
 //test objects displayed with alphabetical properties
 var employees=[{annualSalary:1000000.00, firstName:'Tony', idNumber:42, jobTitle:'Developer', lastName:'Peraza'},
-                {annualSalary:1000001.00, firstName:'Tori', idNumber:1, jobTitle:'Wife', lastName:'Peraza'},
-              {annualSalary:500.00, firstName:'Kiki', idNumber:5, jobTitle:'cat', lastName:'Peraza'} ];
+{annualSalary:1000001.00, firstName:'Tori', idNumber:1, jobTitle:'Wife', lastName:'Peraza'},
+{annualSalary:500.00, firstName:'Kiki', idNumber:5, jobTitle:'cat', lastName:'Peraza'} ];
 var count = 0;
 
 //function expressions used to increase load speed
@@ -35,35 +35,35 @@ var clearBoxes = function(){
 };
 
 var totalSalary = function () {
-  if (fubar) {console.log("Total salary is now being calculated");}
+  if (debug) {console.log("Total salary is now being calculated");}
   var annualPayOut = 0;
   for (var i = 0; i < employees.length; i++) {
     var pay = makeCents(employees[i].annualSalary);
-    if (fubar) {console.log(employees[i].firstName + ' makes ' + pay);}
+    if (debug) {console.log(employees[i].firstName + ' makes ' + pay);}
     annualPayOut = (parseFloat(annualPayOut) +  parseFloat(pay));
-    if (fubar) {console.log("annual pay out is :", annualPayOut);}
+    if (debug) {console.log("annual pay out is :", annualPayOut);}
   }
   var monthlyPayOut = makeCents(annualPayOut)/12;
   document.getElementById('monthlyTotal').innerHTML= "Each month we pay $" + makeCents(monthlyPayOut) + " to our employees. <br> Our average employee is paid " + makeCents(monthlyPayOut/count) + ' each month.';
-}
+};
 
 var remove = function (index) {
-  if (fubar) { ("Now removing:",employees[index].firstName, employees[index].lastName)}
+  if (debug) { console.log("Now removing:" + employees[index].firstName + employees[index].lastName); }
   employees.splice(index, 1);
   //reset the employee roster table
   document.getElementById('employeeRoster').innerHTML= "<tr> <th>First Name</th> <th>Last Name</th> <th>ID Number</th> <th>Job Title</th> <th>Annual Salary</th> </tr>";
   //reset global variable for count
   count = 0;
   //reprint the employee array to the roster
-  printEmployees()
-  totalSalary()
+  printEmployees();
+  totalSalary();
 
 };
 //declaired functions used so that they can be accessed from anywhere in the script
 function printEmployees(){
-  if (fubar) { console.log('Now printing the employee roster.');}
+  if (debug) { console.log('Now printing the employee roster.');}
   for (count; count < employees.length; count++) {
-    if (fubar) { console.log('Adding new employee:', employees[count].firstName, employees[count].lastName);}
+    if (debug) { console.log('Adding new employee:', employees[count].firstName, employees[count].lastName);}
     var row = document.getElementById('employeeRoster').insertRow();
     var cell0 = row.insertCell(0);
     var cell1 = row.insertCell(1);
@@ -80,10 +80,10 @@ function printEmployees(){
     cell5.innerHTML = ('<button class="del" onclick="remove(' + count + ')">' + 'DELETE' + '</button>');
 
   }
-};
+}
 
 function addEmployee(){
-  if (fubar) {console.log('addEmployee function running');}
+  if (debug) {console.log('addEmployee function running');}
   //get local variables from user input
   var fNameIn = document.getElementById( 'fName' ).value;
   var lNameIn = document.getElementById( 'lName' ).value;
@@ -91,19 +91,20 @@ function addEmployee(){
   var titleIn = document.getElementById( 'title' ).value;
   var salaryIn = document.getElementById( 'salary' ).value;
   var payPeriodIn = document.getElementById( 'payPeriod' ).value;
-  if (fubar){  console.log( 'adding item: ', fNameIn, lNameIn, idIn, titleIn, salaryIn, payPeriodIn );}
+  if (debug){  console.log( 'adding item: ', fNameIn, lNameIn, idIn, titleIn, salaryIn, payPeriodIn );}
   //Change salary depending on the pay period specified
   clearBoxes();
+  var annualSalary;
   if (payPeriodIn=== 'Monthly'){
-    if (fubar) {console.log('Converting monthly pay to annual.' );}
-    var annualSalary = makeCents(monthlyToAnnual(salaryIn));
+    if (debug) {console.log('Converting monthly pay to annual.' );}
+    annualSalary = makeCents(monthlyToAnnual(salaryIn));
   }
   else if (payPeriodIn === 'Biweekly') {
-    if (fubar) {console.log( 'converting biweekly pay to annual.' );}
+    if (debug) {console.log( 'converting biweekly pay to annual.' );}
     annualSalary = makeCents(biweeklyToAnnual(salaryIn));
   }
   else {
-    if (fubar) {console.log('no conversion required pay is set to annual');}
+    if (debug) {console.log('no conversion required pay is set to annual');}
     annualSalary= makeCents(salaryIn);
   }
   //create an employee object
@@ -117,10 +118,10 @@ function addEmployee(){
   };
   //add employee object to employees array
   employees.push( employee );
-  if (fubar) {console.log( 'Employee Array:', employees );}
+  if (debug) {console.log( 'Employee Array:', employees );}
   printEmployees();
   totalSalary();
-};
+}
 
 
 window.onload = function() {
